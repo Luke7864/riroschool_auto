@@ -1,4 +1,4 @@
-from selenium import webdriver
+﻿from selenium import webdriver
 import time
 import pyautogui
 from datetime import datetime
@@ -13,6 +13,7 @@ print("#주의사항#")
 print("1. 해당 작업을 하는 컴퓨터는 반드시 다른 작업을 같이해서는 안됩니다.")
 print("2. 본 프로그램은 자동으로 엔터 등 각종 키를 누릅니다. 건드리시면 제대로 동작하지 않습니다.")
 print("3. 본 소프트웨어를 사용하기 위해선 chromedriver.exe 파일과 크롬 브라우저가 필요합니다.")
+print("4. 최종 기기 등록 후 1분이 지난 후 사용해주세요!")
 print("----------------------------------------------------------------------------------------------------")
 print("----------------------------------------------------------------------------------------------------")
 rirolink=input("학교의 리로스쿨 url을 적어주세요! 대신고 학생은 그냥 1만 입력하면되요! (예:https://dshs.riroschool.kr):\n")
@@ -41,7 +42,7 @@ for i in range(number):
     print("현재 입력하신 URL > "+str(url)+"\n")
 print("로딩중..")
 time.sleep(2)
-playtime=input("작동할 시간을 입력하세요 3:01 -> 03:01 으로 입력")
+playtime=input("작동할 시간을 입력하세요 PM 09:01 -> 21:01 으로 입력")
 
 driver=webdriver.Chrome('./chromedriver.exe')
 driver.implicitly_wait(1)
@@ -72,6 +73,7 @@ while True:
 for go in url:
     driver.get(go)
     driver.find_element_by_css_selector('#button').click()
+    time.sleep(0.5)
     pyautogui.press('enter')
     time.sleep(0.5)
     print("성공! 다음 수강신청을 합니다!")
